@@ -20,10 +20,13 @@ class _SearchPageState extends State<SearchPage> {
 
   String valueSelected = "New";
   late LayoutViewTypeBloc layoutViewTypeBloc;
+
+  late FocusNode searchInputFocusNode;
   @override
   void initState() {
     super.initState();
     layoutViewTypeBloc = LayoutViewTypeBloc();
+    searchInputFocusNode = FocusNode();
     _textEditingController.text = "Dress";
   }
 
@@ -33,33 +36,41 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: defaultHorizontalPadding),
-        child: Column(children: [
-          const SizedBox(height: 30),
-          SearchInput(textEditingController: _textEditingController),
-          const SizedBox(height: 14),
-          ResultFilterAndLayoutView(
-              selectedDropDownValue: selectedDropDownValue,
-              layoutViewTypeBloc: layoutViewTypeBloc),
-          const SizedBox(
-            height: 14,
-          ),
-          Expanded(
-            child: BlocBuilder<LayoutViewTypeBloc, LayoutViewTypeState>(
-              bloc: layoutViewTypeBloc,
-              builder: (context, state) {
-                return AnimatedSwitcher(
-                  switchInCurve: Curves.easeIn,
-                  switchOutCurve: Curves.easeOut,
-                  duration: const Duration(milliseconds: 600),
-                  reverseDuration: const Duration(milliseconds: 600),
-                  child: state.viewType == LayoutView.grid
-                      ? const GridLayout()
-                      : ListLayout(),
-                );
-              },
+        child: GestureDetector(
+          onTap: () {
+            searchInputFocusNode.unfocus();
+          },
+          child: Column(children: [
+            const SizedBox(height: 30),
+            SearchInput(
+              textEditingController: _textEditingController,
+              searchInputFocusNode: searchInputFocusNode,
             ),
-          ),
-        ]),
+            const SizedBox(height: 14),
+            ResultFilterAndLayoutView(
+                selectedDropDownValue: selectedDropDownValue,
+                layoutViewTypeBloc: layoutViewTypeBloc),
+            const SizedBox(
+              height: 14,
+            ),
+            Expanded(
+              child: BlocBuilder<LayoutViewTypeBloc, LayoutViewTypeState>(
+                bloc: layoutViewTypeBloc,
+                builder: (context, state) {
+                  return AnimatedSwitcher(
+                    switchInCurve: Curves.easeIn,
+                    switchOutCurve: Curves.easeOut,
+                    duration: const Duration(milliseconds: 600),
+                    reverseDuration: const Duration(milliseconds: 600),
+                    child: state.viewType == LayoutView.grid
+                        ? const GridLayout()
+                        : ListLayout(),
+                  );
+                },
+              ),
+            ),
+          ]),
+        ),
       ),
     );
   }
@@ -179,29 +190,34 @@ class ResultFilterAndLayoutView extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Image.asset(
                       state.viewType == LayoutView.grid
-                          ? "assets/icons/grid_view.png"
-                          : "assets/icons/view_icon.png",
+                          ? "assets/icons/view_icon.png"
+                          : "assets/icons/grid_view.png",
                       height: 30,
                       width: 30,
-                      color: Colors.grey.shade900,
+                      color: Colors.black,
                     ),
                   ),
                 ),
               ),
             ),
             SizedBox(width: 10),
-            Container(
-              decoration: BoxDecoration(
-                color: AppColor.kkIconBackground,
-                shape: BoxShape.circle,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  "assets/icons/filter.png",
-                  height: 30,
-                  width: 30,
-                  color: AppColor.kkSecondaryColor,
+            GestureDetector(
+              onTap: () {
+                Scaffold.of(context).openEndDrawer();
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: AppColor.kkIconBackground,
+                  shape: BoxShape.circle,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(
+                    "assets/icons/filter.png",
+                    height: 30,
+                    width: 30,
+                    color: AppColor.kkSecondaryColor,
+                  ),
                 ),
               ),
             ),
@@ -346,20 +362,22 @@ class GridLayout extends StatelessWidget {
 }
 
 class SearchInput extends StatelessWidget {
-  const SearchInput({
+  SearchInput({
     Key? key,
+    required this.searchInputFocusNode,
     required TextEditingController textEditingController,
   })  : _textEditingController = textEditingController,
         super(key: key);
 
   final TextEditingController _textEditingController;
-
+  FocusNode searchInputFocusNode;
   @override
   Widget build(BuildContext context) {
     return Row(children: [
       Expanded(
           child: TextField(
         controller: _textEditingController,
+        focusNode: searchInputFocusNode,
         decoration: InputDecoration(
             fillColor: Colors.red,
             suffixIcon: Row(
