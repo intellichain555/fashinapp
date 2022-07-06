@@ -122,61 +122,62 @@ class _SearchPageState extends State<SearchPage> {
           SizedBox(
             height: 14,
           ),
-          GridView.builder(
-              padding: EdgeInsets.zero,
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: firstFour.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  // crossAxisSpacing: 12,
-                  mainAxisSpacing: 12,
-                  childAspectRatio: 1 / 1.6,
-                  crossAxisCount: 2),
-              itemBuilder: (context, index) {
-                var _product = firstFour[index];
-                return Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ProductDetailsPage(
-                                    product: _product,
-                                  )));
-                    },
-                    child: Column(children: [
-                      Expanded(
-                          child: CachedNetworkImage(
-                        fit: BoxFit.cover,
-                        imageUrl: _product.imageUrl.first,
-                        progressIndicatorBuilder:
-                            (context, url, downloadProgress) => Center(
-                          child: CircularProgressIndicator(
-                              color:
-                                  AppColor.kkPlaceHolderColor.withOpacity(0.4),
-                              value: downloadProgress.progress),
+          Expanded(
+            child: GridView.builder(
+                padding: EdgeInsets.zero,
+                physics: BouncingScrollPhysics(),
+                itemCount: firstFour.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    // crossAxisSpacing: 12,
+                    mainAxisSpacing: 12,
+                    childAspectRatio: 1 / 1.6,
+                    crossAxisCount: 2),
+                itemBuilder: (context, index) {
+                  var _product = firstFour[index];
+                  return Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ProductDetailsPage(
+                                      product: _product,
+                                    )));
+                      },
+                      child: Column(children: [
+                        Expanded(
+                            child: CachedNetworkImage(
+                          fit: BoxFit.cover,
+                          imageUrl: _product.imageUrl.first,
+                          progressIndicatorBuilder:
+                              (context, url, downloadProgress) => Center(
+                            child: CircularProgressIndicator(
+                                color: AppColor.kkPlaceHolderColor
+                                    .withOpacity(0.4),
+                                value: downloadProgress.progress),
+                          ),
+                          errorWidget: (context, string, dyn) =>
+                              Icon(Icons.error),
+                        )),
+                        SizedBox(height: 4),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 4.0),
+                          child: Text(
+                            _product.brandName + " " + _product.title,
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
-                        errorWidget: (context, string, dyn) =>
-                            Icon(Icons.error),
-                      )),
-                      SizedBox(height: 4),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 4.0),
-                        child: Text(
-                          _product.brandName + " " + _product.title,
-                          textAlign: TextAlign.center,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      Text("\$" + _product.price,
-                          style: TextStyle(color: AppColor.kkSecondaryColor))
-                    ]),
-                  ),
-                );
-              }),
+                        SizedBox(height: 5),
+                        Text("\$" + _product.price,
+                            style: TextStyle(color: AppColor.kkSecondaryColor))
+                      ]),
+                    ),
+                  );
+                }),
+          ),
         ]),
       ),
     );

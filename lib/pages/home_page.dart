@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:plaid_test_app/constants.dart';
 import 'package:plaid_test_app/data.dart';
 import 'package:plaid_test_app/global_widgets/app_bar.dart';
+import 'package:plaid_test_app/global_widgets/boldtext_with_image_underline.dart';
 import 'package:plaid_test_app/pages/product_detail_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,19 +30,7 @@ class _HomePageState extends State<HomePage> {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                Column(
-                  children: [
-                    SizedBox(height: 30),
-                    Text(
-                      "NEW ARRIVAL",
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: AppColor.kktTitleActiveColor),
-                    ),
-                    Image.asset("assets/extras/arrow_underline.png"),
-                  ],
-                ),
+                boldTextWithImageUnderline(title: "NEW ARRIVAL"),
 
                 SizedBox(height: 20),
                 SingleChildScrollView(
