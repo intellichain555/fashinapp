@@ -15,9 +15,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Open Fashion',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          appBarTheme:
-              appBarThemeData.copyWith(backgroundColor: AppColor.kkLabelColor),
+          appBarTheme: appBarThemeData.copyWith(
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.black,
+              elevation: 0.0),
           scaffoldBackgroundColor: Colors.white,
           tabBarTheme: TabBarTheme(
               labelColor: Colors.black, unselectedLabelColor: Colors.grey),

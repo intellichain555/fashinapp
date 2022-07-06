@@ -1,0 +1,1 @@
+enum LayoutView { grid, list }

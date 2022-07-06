@@ -74,3 +74,11 @@ final productsYouMayLike = [
       title: "Reversible angora cardignan",
       price: "120")
 ];
+
+List<String> dropDownValueList = [
+  "New",
+  "Recently Added",
+  "Clearance Sale",
+  "Fitted",
+  "Baggy"
+];

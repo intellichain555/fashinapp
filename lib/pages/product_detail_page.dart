@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plaid_test_app/constants.dart';
 import 'package:plaid_test_app/data.dart';
 import 'package:plaid_test_app/model/product.dart';
-import 'package:plaid_test_app/pages/bloc/cubit/cubit/image_indicator_cubit.dart';
+import 'package:plaid_test_app/pages/bloc/image_indicator/cubit/image_indicator_cubit.dart';
 
 class ProductDetailsPage extends StatelessWidget {
   const ProductDetailsPage({Key? key, required this.product}) : super(key: key);
