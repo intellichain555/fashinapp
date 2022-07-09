@@ -33,45 +33,343 @@ class _SearchPageState extends State<SearchPage> {
   String selectedDropDownValue = "New";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: defaultHorizontalPadding),
-        child: GestureDetector(
-          onTap: () {
-            searchInputFocusNode.unfocus();
-          },
-          child: Column(children: [
-            const SizedBox(height: 30),
-            SearchInput(
-              textEditingController: _textEditingController,
-              searchInputFocusNode: searchInputFocusNode,
-            ),
-            const SizedBox(height: 14),
-            ResultFilterAndLayoutView(
-                selectedDropDownValue: selectedDropDownValue,
-                layoutViewTypeBloc: layoutViewTypeBloc),
-            const SizedBox(
-              height: 14,
-            ),
-            Expanded(
-              child: BlocBuilder<LayoutViewTypeBloc, LayoutViewTypeState>(
-                bloc: layoutViewTypeBloc,
-                builder: (context, state) {
-                  return AnimatedSwitcher(
-                    switchInCurve: Curves.easeIn,
-                    switchOutCurve: Curves.easeOut,
-                    duration: const Duration(milliseconds: 600),
-                    reverseDuration: const Duration(milliseconds: 600),
-                    child: state.viewType == LayoutView.grid
-                        ? const GridLayout()
-                        : ListLayout(),
-                  );
-                },
+    var query = MediaQuery.of(context);
+
+    return MediaQuery(
+      data: query.copyWith(
+          textScaleFactor: query.textScaleFactor.clamp(1.1, 1.2)),
+      child: Scaffold(
+        endDrawer: endFilterDrawer(),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: defaultHorizontalPadding),
+          child: GestureDetector(
+            onTap: () {
+              searchInputFocusNode.unfocus();
+            },
+            child: Column(children: [
+              const SizedBox(height: 30),
+              SearchInput(
+                textEditingController: _textEditingController,
+                searchInputFocusNode: searchInputFocusNode,
               ),
-            ),
-          ]),
+              const SizedBox(height: 14),
+              ResultFilterAndLayoutView(
+                  selectedDropDownValue: selectedDropDownValue,
+                  layoutViewTypeBloc: layoutViewTypeBloc),
+              const SizedBox(
+                height: 14,
+              ),
+              Expanded(
+                child: BlocBuilder<LayoutViewTypeBloc, LayoutViewTypeState>(
+                  bloc: layoutViewTypeBloc,
+                  builder: (context, state) {
+                    return AnimatedSwitcher(
+                      switchInCurve: Curves.easeIn,
+                      switchOutCurve: Curves.easeOut,
+                      duration: const Duration(milliseconds: 400),
+                      reverseDuration: const Duration(milliseconds: 600),
+                      child: state.viewType == LayoutView.grid
+                          ? const GridLayout()
+                          : ListLayout(),
+                    );
+                  },
+                ),
+              ),
+            ]),
+          ),
         ),
       ),
+    );
+  }
+
+  Drawer endFilterDrawer() {
+    return Drawer(
+      child: Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            CustomWidgetWithLowerBottomBorder(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.close),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  const Text("Filter",
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      "Reset",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            CustomWidgetWithLowerBottomBorder(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text("Sort"),
+                  ),
+                  Row(
+                    children: [
+                      Text("Best Match"),
+                      IconButton(
+                        icon: Icon(
+                          Icons.arrow_forward_ios,
+                          size: 20,
+                        ),
+                        onPressed: () {},
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            CustomWidgetWithLowerBottomBorder(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Text("Buying format"),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.arrow_forward_ios, size: 20),
+                        onPressed: () {},
+                      )
+                    ],
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        "All listing",
+                        "Auction",
+                        "New released",
+                        "Latest"
+                      ]
+                          .map((e) => Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: AppColor.kkPlaceHolderColor
+                                          .withOpacity(0.4),
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 8.0, vertical: 6.0),
+                                    child: Text(e),
+                                  ),
+                                ),
+                              ))
+                          .toList(),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            CustomWidgetWithLowerBottomBorder(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text("Sort"),
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ),
+            CustomWidgetWithLowerBottomBorder(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text("Condition"),
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ),
+            CustomWidgetWithLowerBottomBorder(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text("Price"),
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ),
+            CustomWidgetWithLowerBottomBorder(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text("Category"),
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ),
+            CustomWidgetWithLowerBottomBorder(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text("Subject"),
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ),
+            CustomWidgetWithLowerBottomBorder(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text("Image Color"),
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ),
+            CustomWidgetWithLowerBottomBorder(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text("Item location"),
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ),
+            CustomWidgetWithLowerBottomBorder(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text("Delivery options"),
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_forward_ios,
+                      size: 20,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ),
+            CustomWidgetWithLowerBottomBorder(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Customise"),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.settings,
+                          color: AppColor.kkLabelColor,
+                        ),
+                        IconButton(
+                          icon: Icon(
+                            Icons.arrow_forward_ios,
+                            size: 20,
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CustomWidgetWithLowerBottomBorder extends StatelessWidget {
+  final Widget child;
+
+  const CustomWidgetWithLowerBottomBorder({Key? key, required this.child})
+      : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          border: Border(
+              bottom:
+                  BorderSide(color: AppColor.kkLabelColor.withOpacity(0.2)))),
+      child: child,
     );
   }
 }
@@ -89,12 +387,8 @@ class ResultFilterAndLayoutView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Text(
-          "Save search",
-          style: TextStyle(color: AppColor.kkBodyColor),
-        ),
         Row(
           children: [
             // GestureDetector(
@@ -156,8 +450,10 @@ class ResultFilterAndLayoutView extends StatelessWidget {
               child: FittedBox(
                 fit: BoxFit.contain,
                 child: DropdownButton<String>(
+                    dropdownColor: Colors.white,
                     alignment: Alignment.center,
-                    borderRadius: BorderRadius.circular(0),
+                    borderRadius: BorderRadius.circular(20),
+                    elevation: 2,
                     value: selectedDropDownValue,
                     underline: SizedBox.shrink(),
                     items: dropDownValueList
@@ -311,8 +607,8 @@ class GridLayout extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         itemCount: firstFour.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            // crossAxisSpacing: 12,
-            // mainAxisSpacing: 12,
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12,
             childAspectRatio: 1 / 1.6,
             crossAxisCount: 2),
         itemBuilder: (context, index) {
