@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:plaid_test_app/constants.dart';
 
-customAppBar({void Function()? onTapOnLeading}) {
+customAppBar({void Function()? onLeadingPressed}) {
   return AppBar(
     elevation: 0,
     backgroundColor: AppColor.kkOffWhiteColor,
     leading: IconButton(
-      onPressed: onTapOnLeading,
+      onPressed: onLeadingPressed,
       icon: Image.asset(
         'assets/icons/menuicon.png',
         height: 25,
@@ -16,13 +16,6 @@ customAppBar({void Function()? onTapOnLeading}) {
     title: Image.asset("assets/icons/Logo.png"),
     centerTitle: true,
     actions: [
-      IconButton(
-          onPressed: () {},
-          icon: Image.asset(
-            "assets/icons/searchicon.png",
-            height: 25,
-            width: 20,
-          )),
       IconButton(
         onPressed: () {},
         icon: Image.asset(

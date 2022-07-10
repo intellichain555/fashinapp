@@ -27,67 +27,73 @@ class ProductDetailBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Scaffold(
-        appBar: AppBar(
 
-            // backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-            ),
-        body: Column(
-          children: [
-            Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: defaultHorizontalPadding),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      _productImage(size, context),
-                      SizedBox(height: 14),
-                      _imageSlideIndicator(),
-                      SizedBox(height: 18),
-                      _titleAndPrice(),
-                      SizedBox(height: 20),
-                      ColorAndSize(product: product),
-                      SizedBox(height: 40),
-                      _material(),
-                      SizedBox(height: 20),
-                      _care(),
-                      SizedBox(height: 20),
-                      _similarProduct(),
-                      SizedBox(height: 20),
-                    ],
+    var query = MediaQuery.of(context);
+    return MediaQuery(
+      data: query.copyWith(
+          textScaleFactor: query.textScaleFactor.clamp(1.0, 1.2)),
+      child: Scaffold(
+          appBar: AppBar(
+
+              // backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+              ),
+          body: Column(
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: defaultHorizontalPadding),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        _productImage(size, context),
+                        SizedBox(height: 14),
+                        _imageSlideIndicator(),
+                        SizedBox(height: 18),
+                        _titleAndPrice(),
+                        SizedBox(height: 20),
+                        ColorAndSize(product: product),
+                        SizedBox(height: 40),
+                        _material(),
+                        SizedBox(height: 20),
+                        _care(),
+                        SizedBox(height: 20),
+                        _similarProduct(),
+                        SizedBox(height: 20),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Container(
-              color: AppColor.kktTitleActiveColor,
-              padding: EdgeInsets.symmetric(
-                  horizontal: defaultHorizontalPadding + 5, vertical: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      Icon(Icons.add, color: AppColor.kkOffWhiteColor),
-                      SizedBox(width: 10),
-                      Text(
-                        "ADD TO BASKET",
-                        style: TextStyle(color: AppColor.kkOffWhiteColor),
-                      ),
-                    ],
-                  ),
-                  Icon(
-                    Icons.favorite,
-                    color: AppColor.kkOffWhiteColor,
-                  )
-                ],
-              ),
-            )
-          ],
-        ));
+              Container(
+                color: AppColor.kktTitleActiveColor,
+                padding: EdgeInsets.symmetric(
+                    horizontal: defaultHorizontalPadding + 5, vertical: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.add, color: AppColor.kkOffWhiteColor),
+                        SizedBox(width: 10),
+                        Text(
+                          "ADD TO BASKET",
+                          style: TextStyle(color: AppColor.kkOffWhiteColor),
+                        ),
+                      ],
+                    ),
+                    Icon(
+                      Icons.favorite,
+                      color: AppColor.kkOffWhiteColor,
+                    )
+                  ],
+                ),
+              )
+            ],
+          )),
+    );
   }
 
   Stack _productImage(Size size, BuildContext context) {
@@ -211,10 +217,15 @@ class ProductDetailBody extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              product.brandName,
-              style: TextStyle(
-                  fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 4),
+            Container(
+              color: AppColor.kkLineColor,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  product.brandName,
+                  style: TextStyle(color: AppColor.kkPrimaryColor),
+                ),
+              ),
             ),
             Image.asset(
               "assets/icons/arrow_share.png",
@@ -237,7 +248,7 @@ class ProductDetailBody extends StatelessWidget {
           style: TextStyle(
               color: AppColor.kkSecondaryColor,
               fontSize: 18,
-              fontWeight: FontWeight.w400),
+              fontWeight: FontWeight.w700),
         )
       ],
     );
@@ -258,10 +269,7 @@ class ProductDetailBody extends StatelessWidget {
             SizedBox(height: 10),
             Text(
               "We work with monitoring programmes to ensure compliance with safety, health and quality standards for our products.",
-              style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 14,
-                  color: AppColor.kkLabelColor),
+              style: TextStyle(fontSize: 14, color: AppColor.kkLabelColor),
             )
           ],
         ),
@@ -271,6 +279,7 @@ class ProductDetailBody extends StatelessWidget {
 
   _care() {
     return ExpansionTile(
+      iconColor: AppColor.kkSecondaryColor,
       title: Text(
         "CARE",
         style: TextStyle(
@@ -418,13 +427,15 @@ class ProductDetailBody extends StatelessWidget {
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              fontSize: 11,
+                              fontSize: 14,
                             ),
                           ),
                         ),
                         SizedBox(height: 5),
                         Text("\$" + _product.price,
-                            style: TextStyle(color: AppColor.kkSecondaryColor))
+                            style: TextStyle(
+                                color: AppColor.kkSecondaryColor,
+                                fontWeight: FontWeight.w700))
                       ],
                     ),
                   ),

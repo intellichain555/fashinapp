@@ -47,7 +47,7 @@ class _SearchPageState extends State<SearchPage> {
               searchInputFocusNode.unfocus();
             },
             child: Column(children: [
-              const SizedBox(height: 30),
+              const SizedBox(height: 55),
               SearchInput(
                 textEditingController: _textEditingController,
                 searchInputFocusNode: searchInputFocusNode,
@@ -66,8 +66,8 @@ class _SearchPageState extends State<SearchPage> {
                     return AnimatedSwitcher(
                       switchInCurve: Curves.easeIn,
                       switchOutCurve: Curves.easeOut,
-                      duration: const Duration(milliseconds: 400),
-                      reverseDuration: const Duration(milliseconds: 600),
+                      duration: const Duration(milliseconds: 300),
+                      reverseDuration: const Duration(milliseconds: 300),
                       child: state.viewType == LayoutView.grid
                           ? const GridLayout()
                           : ListLayout(),
@@ -89,6 +89,7 @@ class _SearchPageState extends State<SearchPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.max,
           children: [
+            SizedBox(height: 55),
             CustomWidgetWithLowerBottomBorder(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -391,57 +392,6 @@ class ResultFilterAndLayoutView extends StatelessWidget {
       children: [
         Row(
           children: [
-            // GestureDetector(
-            //   onTap: () {
-            //     showDialog(
-            //         context: context,
-            //         builder: (context) {
-            //           return AlertDialog(
-            //               shape: RoundedRectangleBorder(
-            //                 borderRadius: BorderRadius.circular(20),
-            //               ),
-            //               content: Column(
-            //                 mainAxisSize: MainAxisSize.min,
-            //                 children: [
-            //                   "New",
-            //                   "Ending soon",
-            //                   "Bid only",
-            //                   "Savage"
-            //                 ]
-            //                     .map((e) => ListTile(
-            //                           onTap: () {
-            //                             setState(() {
-            //                               valueSelected = e;
-            //                             });
-            //                           },
-            //                           title: Text(e),
-            //                         ))
-            //                     .toList(),
-            //               ));
-            //         });
-            //   },
-            //   child: Container(
-            //     decoration: BoxDecoration(
-            //       color: AppColor.kkIconBackground,
-            //       borderRadius: BorderRadius.circular(30),
-            //     ),
-            //     child: Padding(
-            //       padding: const EdgeInsets.symmetric(
-            //           vertical: 8.0, horizontal: 12),
-            //       child: Row(children: [
-            //         Text("Sort"),
-            //         SizedBox(
-            //           width: 4,
-            //         ),
-            //         Icon(
-            //           CupertinoIcons.arrowtriangle_down_fill,
-            //           size: 15,
-            //         )
-            //       ]),
-            //     ),
-            //   ),
-            // ),
-
             Container(
               decoration: BoxDecoration(
                   color: AppColor.kkIconBackground,
@@ -624,33 +574,61 @@ class GridLayout extends StatelessWidget {
                               product: _product,
                             )));
               },
-              child: Column(children: [
-                Expanded(
-                    child: CachedNetworkImage(
-                  fit: BoxFit.fill,
-                  imageUrl: _product.imageUrl.first,
-                  progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      Center(
-                    child: CircularProgressIndicator(
-                        color: AppColor.kkPlaceHolderColor.withOpacity(0.4),
-                        value: downloadProgress.progress),
-                  ),
-                  errorWidget: (context, string, dyn) => Icon(Icons.error),
-                )),
-                SizedBox(height: 4),
-                Padding(
-                  padding: const EdgeInsets.only(left: 4.0),
-                  child: Text(
-                    _product.brandName + " " + _product.title,
-                    textAlign: TextAlign.center,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                SizedBox(height: 5),
-                Text("\$" + _product.price,
-                    style: TextStyle(color: AppColor.kkSecondaryColor))
-              ]),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                        child: Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        CachedNetworkImage(
+                          fit: BoxFit.fill,
+                          imageUrl: _product.imageUrl.first,
+                          progressIndicatorBuilder:
+                              (context, url, downloadProgress) => Center(
+                            child: CircularProgressIndicator(
+                                color: AppColor.kkPlaceHolderColor
+                                    .withOpacity(0.4),
+                                value: downloadProgress.progress),
+                          ),
+                          errorWidget: (context, string, dyn) =>
+                              Icon(Icons.error),
+                        ),
+                        Positioned(
+                            left: 0,
+                            bottom: 0,
+                            child: Container(
+                              color: AppColor.kkOffWhiteColor,
+                              child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Text(
+                                  _product.brandName,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ))
+                      ],
+                    )),
+                    SizedBox(height: 4),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 4.0),
+                      child: Text(
+                        _product.title,
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text("\$" + _product.price,
+                        style: TextStyle(
+                            color: AppColor.kkSecondaryColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700))
+                  ]),
             ),
           );
         });

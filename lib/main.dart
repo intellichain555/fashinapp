@@ -22,24 +22,14 @@ class MyApp extends StatelessWidget {
               foregroundColor: Colors.black,
               elevation: 0.0),
           scaffoldBackgroundColor: Colors.white,
-          tabBarTheme: TabBarTheme(
+          tabBarTheme: const TabBarTheme(
               labelColor: Colors.black, unselectedLabelColor: Colors.grey),
           textTheme: appTextTheme),
       routes: {
-        TabManagerPage.id: (context) => TabManagerPage(),
+        TabManagerPage.id: (context) => const TabManagerPage(),
         HomePage.id: (context) => const HomePage(),
       },
       initialRoute: TabManagerPage.id,
     );
   }
 }
-
-// class FirstPage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//
-//       home: const HomePage(),
-//     );
-//   }
-// }

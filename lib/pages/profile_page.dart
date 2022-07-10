@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plaid_test_app/constants.dart';
+import 'package:plaid_test_app/global_widgets/avatar_name_email.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -10,9 +11,11 @@ class ProfilePage extends StatelessWidget {
 
     return MediaQuery(
       data: query.copyWith(
-          textScaleFactor: query.textScaleFactor.clamp(1.1, 1.2)),
-      child: Scaffold(
-        body: ProfilePageView(key: key),
+          textScaleFactor: query.textScaleFactor.clamp(1.0, 1.2)),
+      child: SafeArea(
+        child: Scaffold(
+          body: ProfilePageView(key: key),
+        ),
       ),
     );
   }
@@ -28,54 +31,49 @@ class ProfilePageView extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          _avatarNameAndAddress(),
+          avatarNameAndAddress(),
           Divider(
             height: 0,
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget _avatarNameAndAddress() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 20),
-      color: AppColor.kkIconBackground,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 80,
-            width: 80,
-            decoration: BoxDecoration(
-              border: Border.all(),
-              borderRadius: BorderRadius.circular(50),
-              color: AppColor.kkInputBackgroundColor,
-            ),
-            child: Icon(Icons.person_pin),
-          ),
-          SizedBox(width: 10),
+          const SizedBox(height: 30),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 4.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Text(
-                    "John Doery",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                    "No 8, 2192GX , Allen way, Nigeria",
-                    style:
-                        TextStyle(fontSize: 12, color: AppColor.kkLabelColor),
-                  ),
-                ],
-              ),
-            ),
-          ),
+            child: ListView(
+                physics: BouncingScrollPhysics(),
+                children: ListTile.divideTiles(
+                    color: AppColor.kkLabelColor.withOpacity(0.3),
+                    tiles: [
+                      ListTile(
+                        onTap: () {},
+                        leading: const Text("Wishlist"),
+                        trailing: const Icon(Icons.arrow_forward_ios_outlined),
+                      ),
+                      ListTile(
+                        onTap: () {},
+                        leading: const Text("My order"),
+                        trailing: const Icon(Icons.arrow_forward_ios_outlined),
+                      ),
+                      ListTile(
+                        onTap: () {},
+                        leading: const Text("My Orders"),
+                        trailing: const Icon(Icons.arrow_forward_ios_outlined),
+                      ),
+                      ListTile(
+                        onTap: () {},
+                        leading: const Text("Delivery Address"),
+                        trailing: const Icon(Icons.arrow_forward_ios_outlined),
+                      ),
+                      ListTile(
+                        onTap: () {},
+                        leading: const Text("Gift cards & vouchers"),
+                        trailing: const Icon(Icons.arrow_forward_ios_outlined),
+                      ),
+                      ListTile(
+                        onTap: () {},
+                        leading: const Text("Contact preferences"),
+                        trailing: const Icon(Icons.arrow_forward_ios_outlined),
+                      )
+                    ]).toList()),
+          )
         ],
       ),
     );
