@@ -1,4 +1,4 @@
-# Flutter Todo App 
+# Open Fashion App
 
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/devlonoah.svg?style=social)](https://twitter.com/devlonoah)
@@ -9,13 +9,12 @@
 <br>
 A clean fashion ecommerce app built with flutter.
 <br>
+
+https://user-images.githubusercontent.com/55284278/178515980-3a13b6cd-5515-4289-894e-16833be012bf.mp4
+
 <br>
-<video src=“https://drive.google.com/file/d/1XVDdLZkuWfa9GtJNFXojvVybqWQPq3h3/view?usp=sharing”></video>
 
-
-<img src="https://drive.google.com/file/d/1XVDdLZkuWfa9GtJNFXojvVybqWQPq3h3/view?usp=sharing" width="220" height="400"/>
-
-<a href="https://github.com/Devlonoah/files-apk-/blob/main/bee_todo.apk"><img src="https://github.com/Devlonoah/bee_todo/blob/master/apk_download_button.png" width="220" height="65"/></img></a>
+<a href="https://github.com/Devlonoah/files-apk-/blob/main/open_fashion_ecommerce.apk"><img src="https://github.com/Devlonoah/bee_todo/blob/master/apk_download_button.png" width="220" height="65"/></img></a>
 
 <br> Please star⭐ the repo if you like what you see😉.
 
