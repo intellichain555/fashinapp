@@ -10,8 +10,7 @@
 A clean fashion ecommerce app built with flutter.
 <br>
 <br>
-<video src='https://drive.google.com/file/d/1XVDdLZkuWfa9GtJNFXojvVybqWQPq3h3/view?usp=sharing' width=180></video>
-
+<video src=“https://drive.google.com/file/d/1XVDdLZkuWfa9GtJNFXojvVybqWQPq3h3/view?usp=sharing”></video>
 
 
 <img src="https://drive.google.com/file/d/1XVDdLZkuWfa9GtJNFXojvVybqWQPq3h3/view?usp=sharing" width="220" height="400"/>
