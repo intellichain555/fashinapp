@@ -1,16 +1,32 @@
-# plaid_test_app
+# Flutter Todo App 
 
-A new Flutter project.
 
-## Getting Started
+[![Twitter Follow](https://img.shields.io/twitter/follow/devlonoah.svg?style=social)](https://twitter.com/devlonoah)
+<br>
 
-This project is a starting point for a Flutter application.
+<a href="https://www.buymeacoffee.com/devlonoah" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
-A few resources to get you started if this is your first Flutter project:
+<br>
+A clean fashion ecommerce app built with flutter.
+<br>
+<br>
+<video src='https://drive.google.com/file/d/1XVDdLZkuWfa9GtJNFXojvVybqWQPq3h3/view?usp=sharing' width=180></video>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+<img src="https://drive.google.com/file/d/1XVDdLZkuWfa9GtJNFXojvVybqWQPq3h3/view?usp=sharing" width="220" height="400"/>
+
+<a href="https://github.com/Devlonoah/files-apk-/blob/main/bee_todo.apk"><img src="https://github.com/Devlonoah/bee_todo/blob/master/apk_download_button.png" width="220" height="65"/></img></a>
+
+<br> Please star⭐ the repo if you like what you see😉.
+
+## 💻 Requirements
+- Any Operating System (ie. MacOS X, Linux, Windows)
+- Any IDE with Flutter SDK installed (ie. IntelliJ, Android Studio, VSCode etc)
+- A little knowledge of Dart and Flutter
+
+
+## 🤓 Author(s)
+
+**Opeyemi Noah Lawal**
+
