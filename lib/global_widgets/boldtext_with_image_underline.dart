@@ -12,7 +12,7 @@ boldTextWithImageUnderline({required String title}) {
             fontWeight: FontWeight.w400,
             color: AppColor.kktTitleActiveColor),
       ),
-      Image.asset("assets/extras/arrow_underline.png"),
+      Image.asset("assets/extras/s.png"),
     ],
   );
 }
