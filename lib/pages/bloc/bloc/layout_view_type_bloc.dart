@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:plaid_test_app/pages/bloc/bloc/view_type_enum.dart';
+import 'view_type_enum.dart';
 
 part 'layout_view_type_event.dart';
 part 'layout_view_type_state.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:plaid_test_app/constants.dart';
-import 'package:plaid_test_app/pages/home_page.dart';
-import 'package:plaid_test_app/pages/tab_manager.dart';
-import 'package:plaid_test_app/text_theme.dart';
+import 'constants.dart';
+import 'pages/home_page.dart';
+import 'pages/tab_manager.dart';
+import 'text_theme.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:plaid_test_app/constants.dart';
-import 'package:plaid_test_app/data.dart';
-import 'package:plaid_test_app/global_widgets/app_bar.dart';
-import 'package:plaid_test_app/global_widgets/avatar_name_email.dart';
-import 'package:plaid_test_app/global_widgets/boldtext_with_image_underline.dart';
-import 'package:plaid_test_app/pages/product_detail_page.dart';
+import '../constants.dart';
+import '../data.dart';
+import '../global_widgets/app_bar.dart';
+import '../global_widgets/avatar_name_email.dart';
+import '../global_widgets/boldtext_with_image_underline.dart';
+import 'product_detail_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

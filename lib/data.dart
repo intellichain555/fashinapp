@@ -1,4 +1,4 @@
-import 'package:plaid_test_app/model/product.dart';
+import 'model/product.dart';
 
 final newArrival = [
   Product(

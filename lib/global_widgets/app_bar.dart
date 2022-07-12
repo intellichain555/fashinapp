@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:plaid_test_app/constants.dart';
+import '../constants.dart';
 
 customAppBar({void Function()? onLeadingPressed}) {
   return AppBar(

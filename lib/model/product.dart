@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:plaid_test_app/constants.dart';
-import 'package:plaid_test_app/data.dart';
+import '../constants.dart';
+import '../data.dart';
 
 class Product {
   final String brandName;

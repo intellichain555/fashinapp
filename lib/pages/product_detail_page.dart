@@ -2,10 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:plaid_test_app/constants.dart';
-import 'package:plaid_test_app/data.dart';
-import 'package:plaid_test_app/model/product.dart';
-import 'package:plaid_test_app/pages/bloc/image_indicator/cubit/image_indicator_cubit.dart';
+import '../constants.dart';
+import '../data.dart';
+import '../model/product.dart';
+import 'bloc/image_indicator/cubit/image_indicator_cubit.dart';
 
 class ProductDetailsPage extends StatelessWidget {
   const ProductDetailsPage({Key? key, required this.product}) : super(key: key);

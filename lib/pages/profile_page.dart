@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:plaid_test_app/constants.dart';
-import 'package:plaid_test_app/global_widgets/avatar_name_email.dart';
+import '../constants.dart';
+import '../global_widgets/avatar_name_email.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);

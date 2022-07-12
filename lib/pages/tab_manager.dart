@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:plaid_test_app/constants.dart';
-import 'package:plaid_test_app/pages/home_page.dart';
-import 'package:plaid_test_app/pages/profile_page.dart';
-import 'package:plaid_test_app/pages/search_page.dart';
+import '../constants.dart';
+import 'home_page.dart';
+import 'profile_page.dart';
+import 'search_page.dart';
 
 class TabManagerPage extends StatefulWidget {
   static String id = "TabManagerPage";

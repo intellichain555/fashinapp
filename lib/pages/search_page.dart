@@ -2,11 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:plaid_test_app/constants.dart';
-import 'package:plaid_test_app/data.dart';
-import 'package:plaid_test_app/pages/bloc/bloc/layout_view_type_bloc.dart';
-import 'package:plaid_test_app/pages/bloc/bloc/view_type_enum.dart';
-import 'package:plaid_test_app/pages/product_detail_page.dart';
+import '../constants.dart';
+import '../data.dart';
+import 'bloc/bloc/layout_view_type_bloc.dart';
+import 'bloc/bloc/view_type_enum.dart';
+import 'product_detail_page.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
