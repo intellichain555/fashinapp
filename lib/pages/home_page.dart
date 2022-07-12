@@ -111,6 +111,7 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     Expanded(
                                         child: Stack(
+                                      fit: StackFit.expand,
                                       children: [
                                         CachedNetworkImage(
                                           fit: BoxFit.fill,

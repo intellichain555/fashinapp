@@ -112,7 +112,7 @@ class ProductDetailBody extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return CachedNetworkImage(
                     imageUrl: product.imageUrl[0],
-                    fit: BoxFit.contain,
+                    fit: BoxFit.cover,
                   );
                 })),
         Positioned(
@@ -410,33 +410,42 @@ class ProductDetailBody extends StatelessWidget {
                   width: 130,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CachedNetworkImage(
-                          imageUrl: _product.imageUrl[0],
-                          height: 140,
-                          // width: 130,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                        SizedBox(
-                          width: 130,
-                          child: Text(
-                            _product.title + "hello elpsds sdjskj",
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontSize: 14,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    ProductDetailsPage(product: _product)));
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CachedNetworkImage(
+                            imageUrl: _product.imageUrl[0],
+                            height: 140,
+                            // width: 130,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
+                          SizedBox(
+                            width: 130,
+                            child: Text(
+                              _product.title + "hello elpsds sdjskj",
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(height: 5),
-                        Text("\$" + _product.price,
-                            style: TextStyle(
-                                color: AppColor.kkSecondaryColor,
-                                fontWeight: FontWeight.w700))
-                      ],
+                          SizedBox(height: 5),
+                          Text("\$" + _product.price,
+                              style: TextStyle(
+                                  color: AppColor.kkSecondaryColor,
+                                  fontWeight: FontWeight.w700))
+                        ],
+                      ),
                     ),
                   ),
                 );

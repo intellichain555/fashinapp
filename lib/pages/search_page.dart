@@ -84,275 +84,284 @@ class _SearchPageState extends State<SearchPage> {
 
   Drawer endFilterDrawer() {
     return Drawer(
-      child: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            SizedBox(height: 55),
-            CustomWidgetWithLowerBottomBorder(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.close),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+      child: Column(
+        children: [
+          SizedBox(height: 50),
+          CustomWidgetWithLowerBottomBorder(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.close),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                const Text("Filter",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    "Reset",
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  const Text("Filter",
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Reset",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  )
-                ],
-              ),
+                )
+              ],
             ),
-            CustomWidgetWithLowerBottomBorder(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Text("Sort"),
-                  ),
-                  Row(
-                    children: [
-                      Text("Best Match"),
-                      IconButton(
-                        icon: Icon(
-                          Icons.arrow_forward_ios,
-                          size: 20,
-                        ),
-                        onPressed: () {},
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            CustomWidgetWithLowerBottomBorder(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: Text("Buying format"),
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.arrow_forward_ios, size: 20),
-                        onPressed: () {},
-                      )
-                    ],
-                  ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        "All listing",
-                        "Auction",
-                        "New released",
-                        "Latest"
-                      ]
-                          .map((e) => Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: AppColor.kkPlaceHolderColor
-                                          .withOpacity(0.4),
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 8.0, vertical: 6.0),
-                                    child: Text(e),
-                                  ),
-                                ),
-                              ))
-                          .toList(),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            CustomWidgetWithLowerBottomBorder(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Text("Sort"),
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_forward_ios,
-                      size: 20,
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ),
-            CustomWidgetWithLowerBottomBorder(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Text("Condition"),
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_forward_ios,
-                      size: 20,
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ),
-            CustomWidgetWithLowerBottomBorder(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Text("Price"),
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_forward_ios,
-                      size: 20,
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ),
-            CustomWidgetWithLowerBottomBorder(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Text("Category"),
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_forward_ios,
-                      size: 20,
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ),
-            CustomWidgetWithLowerBottomBorder(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Text("Subject"),
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_forward_ios,
-                      size: 20,
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ),
-            CustomWidgetWithLowerBottomBorder(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Text("Image Color"),
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_forward_ios,
-                      size: 20,
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ),
-            CustomWidgetWithLowerBottomBorder(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Text("Item location"),
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_forward_ios,
-                      size: 20,
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ),
-            CustomWidgetWithLowerBottomBorder(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Text("Delivery options"),
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_forward_ios,
-                      size: 20,
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ),
-            CustomWidgetWithLowerBottomBorder(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          ),
+          Expanded(
+            child: ListView(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisSize: MainAxisSize.max,
                   children: [
-                    Text("Customise"),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.settings,
-                          color: AppColor.kkLabelColor,
-                        ),
-                        IconButton(
-                          icon: Icon(
-                            Icons.arrow_forward_ios,
-                            size: 20,
+                    CustomWidgetWithLowerBottomBorder(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Text("Sort"),
                           ),
-                          onPressed: () {},
-                        ),
-                      ],
+                          Row(
+                            children: [
+                              Text("Best Match"),
+                              IconButton(
+                                icon: Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: 20,
+                                ),
+                                onPressed: () {},
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
+                    CustomWidgetWithLowerBottomBorder(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Text("Buying format"),
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.arrow_forward_ios, size: 20),
+                                onPressed: () {},
+                              )
+                            ],
+                          ),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+                                "All listing",
+                                "Auction",
+                                "New released",
+                                "Latest"
+                              ]
+                                  .map((e) => Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color: AppColor.kkPlaceHolderColor
+                                                  .withOpacity(0.4),
+                                              borderRadius:
+                                                  BorderRadius.circular(20)),
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 8.0, vertical: 6.0),
+                                            child: Text(e),
+                                          ),
+                                        ),
+                                      ))
+                                  .toList(),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    CustomWidgetWithLowerBottomBorder(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Text("Sort"),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.arrow_forward_ios,
+                              size: 20,
+                            ),
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
+                    ),
+                    CustomWidgetWithLowerBottomBorder(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Text("Condition"),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.arrow_forward_ios,
+                              size: 20,
+                            ),
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
+                    ),
+                    CustomWidgetWithLowerBottomBorder(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Text("Price"),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.arrow_forward_ios,
+                              size: 20,
+                            ),
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
+                    ),
+                    CustomWidgetWithLowerBottomBorder(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Text("Category"),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.arrow_forward_ios,
+                              size: 20,
+                            ),
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
+                    ),
+                    CustomWidgetWithLowerBottomBorder(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Text("Subject"),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.arrow_forward_ios,
+                              size: 20,
+                            ),
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
+                    ),
+                    CustomWidgetWithLowerBottomBorder(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Text("Image Color"),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.arrow_forward_ios,
+                              size: 20,
+                            ),
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
+                    ),
+                    CustomWidgetWithLowerBottomBorder(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Text("Item location"),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.arrow_forward_ios,
+                              size: 20,
+                            ),
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
+                    ),
+                    CustomWidgetWithLowerBottomBorder(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Text("Delivery options"),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.arrow_forward_ios,
+                              size: 20,
+                            ),
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
+                    ),
+                    CustomWidgetWithLowerBottomBorder(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text("Customise"),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.settings,
+                                  color: AppColor.kkLabelColor,
+                                ),
+                                IconButton(
+                                  icon: Icon(
+                                    Icons.arrow_forward_ios,
+                                    size: 20,
+                                  ),
+                                  onPressed: () {},
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
                   ],
                 ),
-              ),
-            )
-          ],
-        ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
